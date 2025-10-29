@@ -158,8 +158,8 @@ def transform_data(transactions: pd.DataFrame, fx_rates: pd.DataFrame) -> pd.Dat
 
 
 if __name__ == "__main__":
-    from ingestion import load_all_data
-    from preprocessing import preprocess_transactions
+    from src.ingestion import load_all_data
+    from src.preprocessing import preprocess_transactions
     
     transactions, fx_rates = load_all_data()
     clean_transactions = preprocess_transactions(transactions)

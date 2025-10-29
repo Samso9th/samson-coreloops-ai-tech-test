@@ -240,9 +240,9 @@ def get_feature_columns() -> list:
 
 
 if __name__ == "__main__":
-    from ingestion import load_all_data
-    from preprocessing import preprocess_transactions
-    from transformation import transform_data
+    from src.ingestion import load_all_data
+    from src.preprocessing import preprocess_transactions
+    from src.transformation import transform_data
     
     transactions, fx_rates = load_all_data()
     clean_transactions = preprocess_transactions(transactions)

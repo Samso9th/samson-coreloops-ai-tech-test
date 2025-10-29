@@ -191,7 +191,7 @@ def preprocess_transactions(df: pd.DataFrame) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    from ingestion import load_all_data
+    from src.ingestion import load_all_data
     
     transactions, fx_rates = load_all_data()
     clean_transactions = preprocess_transactions(transactions)

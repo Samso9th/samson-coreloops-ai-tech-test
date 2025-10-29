@@ -276,10 +276,10 @@ def train_pipeline(df: pd.DataFrame, feature_cols: list) -> None:
 
 
 if __name__ == "__main__":
-    from ingestion import load_all_data
-    from preprocessing import preprocess_transactions
-    from transformation import transform_data
-    from features import engineer_features, get_feature_columns
+    from src.ingestion import load_all_data
+    from src.preprocessing import preprocess_transactions
+    from src.transformation import transform_data
+    from src.features import engineer_features, get_feature_columns
     
     # Load and process data
     transactions, fx_rates = load_all_data()
