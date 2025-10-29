@@ -330,6 +330,6 @@ For questions or issues, please contact the repository maintainer.
 
 ---
 
-**Solution by:** Samson Agbo  
-**Date:** October 2025  
-**Tech Test:** AI/ML Engineer Position
+**Solution by:** [Samson Agbo](https://github.com/Samso9th)  
+**Date:** 29th October, 2025  
+**Tech Test:** Coreloops AI/ML Engineer Position

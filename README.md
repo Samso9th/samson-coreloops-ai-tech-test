@@ -1,6 +1,6 @@
 # Coreloops AI Engineer - Customer Revenue Prediction Pipeline
 
-**Implementation by:** Samson Agbo  
+**Implementation by:** [Samson Agbo](https://github.com/Samso9th)  
 **Language:** Python 3.8+  
 **Time Spent:** <4 hours  
 **Status:** ✅ Complete and Production-Ready
