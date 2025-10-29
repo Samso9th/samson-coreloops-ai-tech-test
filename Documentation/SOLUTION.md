@@ -72,7 +72,7 @@ samson-coreloops-ai-tech-test/
 - **Caches files locally** - avoids re-downloading existing data
 - **Auto-discovers new files** - continues checking for new daily files
 - **Incremental processing** - handles new files appearing over time
-- Stops after 30 consecutive missing files (configurable)
+- Stops after 7 consecutive missing files (configurable)
 
 **See [INCREMENTAL_DATA.md](INCREMENTAL_DATA.md) for detailed incremental ingestion strategy**
 

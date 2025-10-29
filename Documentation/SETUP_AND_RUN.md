@@ -35,7 +35,7 @@ python -m scripts.run_pipeline
 **This will:**
 - ✅ Automatically discover ALL available files from GCS
 - ✅ Handle new files appearing over time
-- ✅ Stop after 30 consecutive missing files
+- ✅ Stop after 7 consecutive days without files
 
 **Processing steps (both modes):**
 - Download/cache transaction data

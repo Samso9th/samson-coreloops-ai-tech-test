@@ -19,13 +19,13 @@ discover_and_download_daily_files(start_date="2024-10-01")  # No end_date
 The system will:
 1. Start from `start_date`
 2. Try to download each sequential day
-3. **Continue until 30 consecutive missing files** (configurable)
+3. **Continue until 7 consecutive days without files** (configurable)
 4. Assume all available data has been downloaded
 
 **Example behavior:**
 ```
 📥 Auto-discovering files starting from 2024-10-01...
-  Will stop after 30 consecutive missing files
+  Will stop after 7 consecutive days without files
 
 ✓ Downloaded: 2024-10-01.csv
 ✓ Downloaded: 2024-10-02.csv
@@ -35,8 +35,8 @@ The system will:
 ✗ Failed: 2024-10-06.csv
   Last available file: 2024-10-05
 ✗ Failed: 2024-10-07.csv
-... (continues until 30 failures)
-  Stopped after 30 consecutive missing files
+... (continues until 7 failures)
+  Stopped after 7 consecutive days without files
 
 ✓ Total files available: 5
   Date range: 2024-10-01 to 2024-10-05
@@ -111,8 +111,8 @@ transaction_files = discover_and_download_daily_files()
 - ✅ Production-ready
 
 **Cons:**
-- ⚠️ Makes 30+ HTTP requests to find end
-- ⚠️ Slower first run (but cached after)
+- ⚠️ Makes 7+ extra HTTP requests to find end
+- ⚠️ Slightly slower first run (but cached after)
 
 ---
 
@@ -149,8 +149,8 @@ transaction_files = discover_and_download_daily_files(
 
 **Use cases:**
 - Daily batch: `max_attempts=1` (expect consecutive days)
-- Weekly batch: `max_attempts=7` (may have gaps)
-- Monthly: `max_attempts=30` (default, handles any pattern)
+- Weekly batch: `max_attempts=7` (default, handles weekly gaps)
+- Monthly: `max_attempts=30` (handles large gaps between files)
 
 ---
 
@@ -359,11 +359,11 @@ discover_and_download_daily_files(start_date="2024-09-01")
 ```
 
 ### Q: Performance with large date ranges?
-**A:** Auto-discovery tests 30 days past last file:
-- 5 days of data: ~35 HTTP requests
-- 365 days of data: ~395 HTTP requests
+**A:** Auto-discovery tests 7 days past last file:
+- 5 days of data: ~12 HTTP requests
+- 365 days of data: ~372 HTTP requests
 - Each request: ~100ms (cached files instant)
-- Total discovery time: <1 minute
+- Total discovery time: <30 seconds
 
 ---
 

@@ -54,10 +54,10 @@ samson-coreloops-ai-tech-test/
 ```
 
 **Documentation:**
-- **[SOLUTION.md](SOLUTION.md)** - Comprehensive technical documentation
-- **[FEATURES.md](FEATURES.md)** - Feature engineering details
-- **[INCREMENTAL_DATA.md](INCREMENTAL_DATA.md)** - Incremental ingestion strategy
-- **[SETUP_AND_RUN.md](SETUP_AND_RUN.md)** - Detailed setup instructions
+- **[SOLUTION.md](Documentation/SOLUTION.md)** - Comprehensive technical documentation
+- **[FEATURES.md](Documentation/FEATURES.md)** - Feature engineering details
+- **[INCREMENTAL_DATA.md](Documentation/INCREMENTAL_DATA.md)** - Incremental ingestion strategy
+- **[SETUP_AND_RUN.md](Documentation/SETUP_AND_RUN.md)** - Detailed setup instructions
 
 ---
 
@@ -100,7 +100,7 @@ Creates **21 features** across 5 categories:
 - **Lifetime Features** (4): cumulative orders, spend, tenure
 - **Derived Features** (2): items per order, returns ratio
 
-**See [FEATURES.md](FEATURES.md) for detailed feature documentation**
+**See [FEATURES.md](Documentation/FEATURES.md) for detailed feature documentation**
 
 ### 5. **ML Model Training**
 - ✅ **Model:** Random Forest Regressor (100 trees, depth 15)
@@ -186,7 +186,7 @@ Returns:
 - **7-day lags** - Insufficient historical data
 - **Seasonal features** - Not applicable to 5-day dataset
 
-**See [FEATURES.md](FEATURES.md) for complete feature justification**
+**See [FEATURES.md](Documentation/FEATURES.md) for complete feature justification**
 
 ---
 
@@ -215,11 +215,11 @@ python -m scripts.run_pipeline --end 2024-10-05
 ```
 
 **Features:**
-- Tries sequential dates until 30 consecutive failures
+- Tries sequential dates until 7 consecutive days without files
 - Caches downloaded files (idempotent)
 - Retrains model with full dataset each run
 
-**See [INCREMENTAL_DATA.md](INCREMENTAL_DATA.md) for detailed strategy**
+**See [INCREMENTAL_DATA.md](Documentation/INCREMENTAL_DATA.md) for detailed strategy**
 
 ---
 
@@ -317,7 +317,7 @@ python -m scripts.run_pipeline
 ```
 - Automatically finds all available files
 - Handles new files appearing over time
-- Stops after 30 consecutive missing files
+- Stops after 7 consecutive missing files
 
 ### **Making Predictions**
 ```bash
@@ -362,10 +362,10 @@ python -m scripts.predict --customer C00042 --date 2024-10-06
 
 | File | Description |
 |------|-------------|
-| **[SOLUTION.md](SOLUTION.md)** | Complete technical solution with architecture diagrams |
-| **[FEATURES.md](FEATURES.md)** | Detailed feature engineering documentation |
-| **[INCREMENTAL_DATA.md](INCREMENTAL_DATA.md)** | Incremental data ingestion strategy |
-| **[SETUP_AND_RUN.md](SETUP_AND_RUN.md)** | Step-by-step setup and troubleshooting |
+| **[SOLUTION.md](Documentation/SOLUTION.md)** | Complete technical solution with architecture diagrams |
+| **[FEATURES.md](Documentation/FEATURES.md)** | Detailed feature engineering documentation |
+| **[INCREMENTAL_DATA.md](Documentation/INCREMENTAL_DATA.md)** | Incremental data ingestion strategy |
+| **[SETUP_AND_RUN.md](Documentation/SETUP_AND_RUN.md)** | Step-by-step setup and troubleshooting |
 ---
 
 ## ✅ Requirements Checklist
@@ -423,9 +423,9 @@ python -m scripts.predict --customer C00042 --date 2024-10-06
 ## 🤝 Contact & Support
 
 For questions about the implementation:
-1. Start with [SETUP_AND_RUN.md](SETUP_AND_RUN.md) for setup issues
-2. Check [SOLUTION.md](SOLUTION.md) for technical details
-3. Review [FEATURES.md](FEATURES.md) for feature questions
+1. Start with [SETUP_AND_RUN.md](Documentation/SETUP_AND_RUN.md) for setup issues
+2. Check [SOLUTION.md](Documentation/SOLUTION.md) for technical details
+3. Review [FEATURES.md](Documentation/FEATURES.md) for feature questions
 
 ---
 

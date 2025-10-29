@@ -50,7 +50,7 @@ def download_fx_rates() -> pd.DataFrame:
 
 def discover_and_download_daily_files(start_date: str = "2024-10-01", 
                                        end_date: str = None,
-                                       max_attempts: int = 30) -> List[Path]:
+                                       max_attempts: int = 7) -> List[Path]:
     """
     Discover and download daily transaction files from GCS.
     
@@ -60,7 +60,7 @@ def discover_and_download_daily_files(start_date: str = "2024-10-01",
     Args:
         start_date: Start date in YYYY-MM-DD format
         end_date: End date in YYYY-MM-DD format (None = auto-discover until files stop)
-        max_attempts: Maximum number of consecutive 404s before stopping (default: 30 days)
+        max_attempts: Maximum number of consecutive 404s before stopping (default: 7 days)
     
     Returns:
         List of paths to successfully downloaded files
@@ -76,7 +76,7 @@ def discover_and_download_daily_files(start_date: str = "2024-10-01",
         print(f"\n📥 Discovering files from {start_date} to {end_date}...")
     else:
         print(f"\n📥 Auto-discovering files starting from {start_date}...")
-        print(f"  Will stop after {max_attempts} consecutive missing files")
+        print(f"  Will stop after {max_attempts} consecutive days without files")
     
     while True:
         # Stop if we've reached the end date
