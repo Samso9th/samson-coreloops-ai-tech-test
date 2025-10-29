@@ -2,9 +2,11 @@
 Main pipeline script to run the complete ETL and ML training workflow.
 
 Usage:
-    python -m scripts.run_pipeline
+    python -m scripts.run_pipeline                    # Auto-discover new files
+    python -m scripts.run_pipeline --end 2024-10-05  # Fixed date range
 """
 import sys
+import argparse
 from pathlib import Path
 
 # Add src to path
@@ -19,13 +21,31 @@ from model import train_pipeline
 
 def main():
     """Run the complete pipeline."""
+    parser = argparse.ArgumentParser(
+        description='Run the complete ML pipeline',
+        epilog='Example: python -m scripts.run_pipeline --end 2024-10-05'
+    )
+    parser.add_argument(
+        '--end',
+        type=str,
+        default=None,
+        help='End date for data ingestion (YYYY-MM-DD). If not specified, auto-discovers all available files.'
+    )
+    
+    args = parser.parse_args()
+    
     print("\n" + "=" * 60)
     print("CORELOOPS ML PIPELINE - CUSTOMER REVENUE PREDICTION")
     print("=" * 60)
     
+    if args.end:
+        print(f"Mode: Fixed date range (ending {args.end})")
+    else:
+        print("Mode: Auto-discovery (will find all available files)")
+    
     try:
         # Step 1: Data Ingestion
-        transactions, fx_rates = load_all_data()
+        transactions, fx_rates = load_all_data(end_date=args.end)
         
         # Step 2: Data Preprocessing
         clean_transactions = preprocess_transactions(transactions)

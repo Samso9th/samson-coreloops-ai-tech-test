@@ -69,8 +69,12 @@ samson-coreloops-ai-tech-test/
 ### 1. Data Ingestion (`src/ingestion.py`)
 - Downloads daily transaction CSVs from GCS bucket
 - Downloads FX rates for currency conversion
-- Caches files locally to avoid repeated downloads
-- Auto-discovers available date range
+- **Caches files locally** - avoids re-downloading existing data
+- **Auto-discovers new files** - continues checking for new daily files
+- **Incremental processing** - handles new files appearing over time
+- Stops after 30 consecutive missing files (configurable)
+
+**See [INCREMENTAL_DATA.md](INCREMENTAL_DATA.md) for detailed incremental ingestion strategy**
 
 ### 2. Data Preprocessing (`src/preprocessing.py`)
 

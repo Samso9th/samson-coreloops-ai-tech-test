@@ -15,23 +15,43 @@ pip install -r requirements.txt
 
 ### 2. Run the Complete Pipeline
 
+#### **Option A: Fixed Date Range** (Current - for Testing)
+
+```bash
+python -m scripts.run_pipeline --end 2024-10-05
+```
+
+**This will:**
+- ✅ Download transaction data for Oct 1-5, 2024 (5 days)
+- ✅ Use cached files if already downloaded
+- ✅ Fast and predictable
+
+#### **Option B: Auto-Discovery** (Production-Ready)
+
 ```bash
 python -m scripts.run_pipeline
 ```
 
 **This will:**
-- ✅ Download all transaction data from GCS (Oct 1-5, 2024 - 5 days)
-- ✅ Download FX rates
-- ✅ Clean and preprocess data
-- ✅ Convert all currencies to GBP
-- ✅ Aggregate daily customer metrics
-- ✅ Engineer features (optimized for small dataset)
-- ✅ Train Random Forest model
-- ✅ Save artifacts to `artifacts/`
+- ✅ Automatically discover ALL available files from GCS
+- ✅ Handle new files appearing over time
+- ✅ Stop after 30 consecutive missing files
 
-**Expected runtime:** 1-2 minutes
+**Processing steps (both modes):**
+- Download/cache transaction data
+- Download FX rates
+- Clean and preprocess data
+- Convert all currencies to GBP
+- Aggregate daily customer metrics
+- Engineer features
+- Train Random Forest model
+- Save artifacts to `artifacts/`
 
-**Note:** The GCS bucket contains 5 days of data (Oct 1-5, 2024). The pipeline has been optimized to work with this limited dataset.
+**Expected runtime:** 1-2 minutes (with 5 days of data)
+
+**Current Data:** The GCS bucket contains 5 days (Oct 1-5, 2024).
+
+**For incremental data strategy, see:** [INCREMENTAL_DATA.md](INCREMENTAL_DATA.md)
 
 ### 3. Make a Prediction
 
